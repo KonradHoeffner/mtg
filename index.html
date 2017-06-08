@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blue Deck Builder</title>
+</head>
+<body>
+	<form>
+		Cantrips
+		<input type="range" name="range-cantrips" min="1" max="10" onchange="show(cantrips,'cantrips',this.value)"><br/>
+		<div id="cantrips"></div>
+
+		Counterspells
+		<input type="range" name="range-counters" min="1" max="10" onchange="show(counters,'counters',this.value)">
+		<div id="counters"></div>
+	</form>
+
+	<script>
+	const cantrips = ["Ponder", "Brainstorm", "Preordain", "Gitaxian Probe", "Serum Visions"];
+	const counters = ["Force of Will", "Remand", "Cryptic Command", "Counterspell", "Mana Leak"];
+	// "Mystic Confluence", "Spell Pierce", "Spell Snare", "Daze", "Force Spike", "Mental Misstep", "Dissolve", "Arcane Denial", "Condescend"];
+
+	document.getElementsByName('range-counters')[0].max=counters.length;
+	document.getElementsByName('range-cantrips')[0].max=cantrips.length;
+
+	function show(cards,id,n)
+	{
+		document.getElementById(id).innerHTML="<ul>";
+		//document.getElementById(id).innerHTML="<ul>";
+		for(i=0;i<n;i++)
+		{
+			fetch('https://api.magicthegathering.io/v1/cards?name='+cards[i])
+			.then((response) => response.json())
+			.then(function(response)
+			{
+				//document.getElementById(id).innerHTML+="<li>"+cards[i]+"</li>";
+				//console.log(response);
+				var url;
+				for(j=0;j<response.cards.length;j++)
+				{
+					url = response.cards[j].imageUrl;
+					if(url)
+					{
+						document.getElementById(id).innerHTML+="<img src='"+url+"'/>";
+						break;
+					}
+				}
+				if(!url)
+				{
+					console.log("Undefined image for card "+cards[i]);
+					console.log(response.cards[0]);
+				}
+			});
+		}
+		//document.getElementById(id).innerHTML+="</ul>";
+	}
+	</script>
+
+</body>
+</html>
