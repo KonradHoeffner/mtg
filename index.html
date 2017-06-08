@@ -6,13 +6,15 @@
 	<title>Blue Deck Builder</title>
 </head>
 <body>
+	<span id="status">0 cards selected, get more blue!</span>
+	<script>var numberOfCards = 0;</script>
 	<form>
 		Cantrips
-		<input type="range" name="range-cantrips" min="1" max="10" onchange="show(cantrips,'cantrips',this.value)"><br/>
+		<input type="range" id="range-cantrips" min="1" max="10" value="1" onchange="show(cantrips,'cantrips',this.value)"><br/>
 		<div id="cantrips"></div>
 
 		Counterspells
-		<input type="range" name="range-counters" min="1" max="10" onchange="show(counters,'counters',this.value)">
+		<input type="range" id="range-counters" min="1" max="10" value="1" onchange="show(counters,'counters',this.value)">
 		<div id="counters"></div>
 	</form>
 
@@ -20,13 +22,21 @@
 	const cantrips = ["Ponder", "Brainstorm", "Preordain", "Gitaxian Probe", "Serum Visions"];
 	const counters = ["Force of Will", "Remand", "Cryptic Command", "Counterspell", "Mana Leak"];
 	// "Mystic Confluence", "Spell Pierce", "Spell Snare", "Daze", "Force Spike", "Mental Misstep", "Dissolve", "Arcane Denial", "Condescend"];
+	const types = ["cantrips" , "counters"];
 
-	document.getElementsByName('range-counters')[0].max=counters.length;
-	document.getElementsByName('range-cantrips')[0].max=cantrips.length;
+	document.getElementById('range-counters').max=counters.length;
+	document.getElementById('range-cantrips').max=cantrips.length;
 
 	function show(cards,id,n)
 	{
-		document.getElementById(id).innerHTML="<ul>";
+		numberOfCards = 0;
+		for(i=0;i<types.length;i++)
+		{
+			console.log(parseInt(document.getElementById("range-"+types[i]).value));
+			numberOfCards+=parseInt(document.getElementById("range-"+types[i]).value);
+		}
+		document.getElementById("status").innerHTML=numberOfCards+" cards selected, get more blue!";
+		document.getElementById(id).innerHTML="";
 		//document.getElementById(id).innerHTML="<ul>";
 		for(i=0;i<n;i++)
 		{
