@@ -3,24 +3,25 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Competitive Commander Deck Finder</title>
+	<title>Blue Deck Builder</title>
 </head>
 <body>
-	<!--<span id="status">0 cards selected, get more blue!</span>
-	<script>var numberOfCards = 0;</script>-->
-	<textarea id="cards" rows="10" cols="50">
-Lightning Bolt
-Taiga
-Kird Ape
-River Boa
-Chain Lightning</textarea>
-	<input type="button" onclick="search(document.getElementById('cards').value.split('\n'))"/>
+	<span id="status">0 cards selected, get more blue!</span>
+	<script>var numberOfCards = 0;</script>
+	<form>
+		Cantrips
+		<input type="range" id="range-cantrips" min="1" max="10" value="1" onchange="show(cantrips,'cantrips',this.value)"><br/>
+		<div id="cantrips"></div>
+
+		Counterspells
+		<input type="range" id="range-counters" min="1" max="10" value="1" onchange="show(counters,'counters',this.value)">
+		<div id="counters"></div>
+	</form>
 
 	<script>
-	function search(cards)
-	{
-		console.log("searching for:\n"+x);
-	}
+	const cantrips = ["Ponder", "Brainstorm", "Preordain", "Gitaxian Probe", "Serum Visions"];
+	const counters = ["Force of Will", "Remand", "Cryptic Command", "Counterspell", "Mana Leak"];
+	// "Mystic Confluence", "Spell Pierce", "Spell Snare", "Daze", "Force Spike", "Mental Misstep", "Dissolve", "Arcane Denial", "Condescend"];
 	const types = ["cantrips" , "counters"];
 
 	document.getElementById('range-counters').max=counters.length;
