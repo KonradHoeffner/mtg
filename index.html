@@ -4,67 +4,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Competitive Commander Deck Finder</title>
+	<script src="js/index.js"></script>
+	<script src="cache/index.js"></script>
 </head>
 <body>
 	<!--<span id="status">0 cards selected, get more blue!</span>
 	<script>var numberOfCards = 0;</script>-->
-	<textarea id="cards" rows="10" cols="50">
-Lightning Bolt
-Taiga
-Kird Ape
-River Boa
-Chain Lightning</textarea>
-	<input type="button" onclick="search(document.getElementById('cards').value.split('\n'))"/>
+	<textarea id="cardNames" rows="10" cols="50">Gaea's Cradle
+Imperial Seal
+Serra's Sanctum
+</textarea>
+<input type="button" onclick="search(document.getElementById('cardNames').value.split('\n'))"/>
 
-	<script>
-	function search(cards)
-	{
-		console.log("searching for:\n"+x);
-	}
-	const types = ["cantrips" , "counters"];
-
-	document.getElementById('range-counters').max=counters.length;
-	document.getElementById('range-cantrips').max=cantrips.length;
-
-	function show(cards,id,n)
-	{
-		numberOfCards = 0;
-		for(i=0;i<types.length;i++)
-		{
-			console.log(parseInt(document.getElementById("range-"+types[i]).value));
-			numberOfCards+=parseInt(document.getElementById("range-"+types[i]).value);
-		}
-		document.getElementById("status").innerHTML=numberOfCards+" cards selected, get more blue!";
-		document.getElementById(id).innerHTML="";
-		//document.getElementById(id).innerHTML="<ul>";
-		for(i=0;i<n;i++)
-		{
-			fetch('https://api.magicthegathering.io/v1/cards?name='+cards[i])
-			.then((response) => response.json())
-			.then(function(response)
-			{
-				//document.getElementById(id).innerHTML+="<li>"+cards[i]+"</li>";
-				//console.log(response);
-				var url;
-				for(j=0;j<response.cards.length;j++)
-				{
-					url = response.cards[j].imageUrl;
-					if(url)
-					{
-						document.getElementById(id).innerHTML+="<img src='"+url+"'/>";
-						break;
-					}
-				}
-				if(!url)
-				{
-					console.log("Undefined image for card "+cards[i]);
-					console.log(response.cards[0]);
-				}
-			});
-		}
-		//document.getElementById(id).innerHTML+="</ul>";
-	}
-	</script>
-
-</body>
-</html>
+	</body>
+	</html>

@@ -4,8 +4,10 @@
   "description": "Scrape the tappedout multiplayer tier list to create an inverse index for decklists.",
   "main": "node/buildindex.js",
   "dependencies": {
+    "collections": "^5.0.7",
     "ineed": "latest"
   },
-  "scripts" : { "buildindex": "node node/buildindex.js"}
-}
+  "scripts": {
+    "buildindex": "node node/buildindex.js"
+  }
 }
