@@ -1,0 +1,11 @@
+{
+  "name": "mtg-buildindex",
+  "version": "0.0.1",
+  "description": "Scrape the tappedout multiplayer tier list to create an inverse index for decklists.",
+  "main": "node/buildindex.js",
+  "dependencies": {
+    "ineed": "latest"
+  },
+  "scripts" : { "buildindex": "node node/buildindex.js"}
+}
+}
