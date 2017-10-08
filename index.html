@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Competitive Commander Deck Finder</title>
+	<title>Competitive Commander Multiplayer Deck Finder</title>
 	<script src="js/index.js"></script>
 	<script src="cache/index.js"></script>
 </head>
@@ -13,7 +13,12 @@
 	<textarea id="cardNames" rows="10" cols="50">Gaea's Cradle
 Imperial Seal
 Serra's Sanctum</textarea>
-<input type="button" onclick="search(document.getElementById('cardNames').value.split('\n'))"/>
+<input type="button" value="Find Decks" onclick="search(document.getElementById('cardNames').value.split('\n'))"/>
 
-	</body>
-	</html>
+<h3>Explanation</h3>
+Type in the English names of the cards you want to use above.
+You will get a list of all of the <a href="http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/">Tier "1-2"</a> decks sorted by number of matches.
+<h3>Questions and Contributions</h3>
+This is a quick hack developed <a href="https://github.com/konradhoeffner/mtg">on GitHub</a>. Feel free to contribute a pull request or to open an issue to report bugs, ask questions or propose additions. 
+</body>
+</html>
