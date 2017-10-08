@@ -3,10 +3,12 @@ function search(cardNames)
  let deckHits = new Map();
  for(const cardName of cardNames)
  {
+   if(!cardName) continue; // empty line
    const decks = indexMap.get(cardName);
    if(!decks) {continue;}
    for(const deck of decks)
    {
+     console.log(`deck ${deck} contains card ${cardName}`);
      let hits = deckHits.get(deck);
      if(!hits) {hits=0;}
      hits++;
