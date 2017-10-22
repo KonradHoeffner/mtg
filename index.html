@@ -4,21 +4,24 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Competitive Commander Multiplayer Deck Finder</title>
-	<script src="js/index.js"></script>
-	<script src="js/alpha.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
 	<script src="cache/index.js"></script>
 	<script src="cache/decklists.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/alpha.js"></script>
 </head>
 <body>
 <textarea id="cardNames" rows="10" cols="50"></textarea>
-<script>document.getElementById("cardNames").value=alpha;</script>
-<input type="button" value="Find Decks" onclick="search(document.getElementById('cardNames').value.split('\n'))"/>
+<script>document.getElementById("cardNames").value="Cradle\nSun Titan\nJitte\nKarmic Guide\nWall of Roots";</script>
+<input type="button" value="Find Decks Exact & Fast" onclick="search(document.getElementById('cardNames').value.split('\n'))"/>
+<input type="button" value="Find Decks Fuzzy & Slow" onclick="fuzzySearch(document.getElementById('cardNames').value.split('\n'))"/>
 
 <h3>Explanation</h3>
 Type in the English names of the cards you want to use above.
 You will get a list of all of the <a href="http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/">Tier "1-3"</a> decks sorted by number of matches.
 As an example, all cards from Alpha edition are given.
+Exact search is very fast but you need to provide the exact card name, such as "Gaea's Cradle".
+Fuzzy search is very slow with more than a few dozen cards at once but works with partial matches ("Bolt","Cradle", "Jitte") and typos ("Thoughtsieze").
 <h3>Motivation</h3>
 Do you have some cards lying around that you can't find a home for? Sites like <a href="https://edhrec.com">EDHREC</a> show you decks for a single card but I haven't found any tool that maximizes the use of multiple cards. Also, I wanted to only include competitive decks.
 <h3>Questions and Contributions</h3>
@@ -29,7 +32,6 @@ Because I couldn't get the tappedout API to work, I had to rely on quick and dir
 <h3>Future Work</h3>
 I am planning to add:
 <ul>
-<li>fuzzy matching (typo correction)</li>
 <li>card weighting (e.g. by card price)</li>
 <li>import and export functions (which file formats do you use?)</li>
 <li>find a minimal amount of decks that cover all, or most of your cards</li>
