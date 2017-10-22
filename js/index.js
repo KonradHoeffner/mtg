@@ -1,10 +1,32 @@
 function search(cardNames)
 {
+ // testing fuse, optimize later by precalculating in node
+ var options = {
+  shouldSort: false,
+  threshold: 0.6,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 50,
+  minMatchCharLength: 3,
+  keys: [
+    "n"]
+ };
+ const cards = [];
+ for(const card of indexMap.keys())
+ {
+  cards.push({n:card});
+ }
+ console.log(cards);
+ var fuse = new Fuse(cards, options); // "list" is the item array
+ //var result = fuse.search("");
+ 
  let deckHits = new Map();
  for(let cardName of cardNames)
  {
-   if(!cardName||cardName.length<3) continue; // empty line or cardname too short
+   if(!cardName) continue;
    cardName=cardName.trim();
+   if(cardName.length<3) continue;
+   console.log(fuse.search(cardName));
    const decks = indexMap.get(cardName);
    if(!decks) {continue;}
    for(const deck of decks)
