@@ -3,7 +3,7 @@ function search(cardNames)
  let deckHits = new Map();
  for(let cardName of cardNames)
  {
-   if(!cardName&&!cardName.trim()) continue; // empty line
+   if(!cardName||cardName.length<3) continue; // empty line or cardname too short
    cardName=cardName.trim();
    const decks = indexMap.get(cardName);
    if(!decks) {continue;}
