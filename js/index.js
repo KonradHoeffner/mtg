@@ -1,6 +1,7 @@
 function search(cardNames)
 {
  // testing fuse, optimize later by precalculating in node
+ /*
  var options = {
   shouldSort: false,
   threshold: 0.6,
@@ -19,14 +20,14 @@ function search(cardNames)
  console.log(cards);
  var fuse = new Fuse(cards, options); // "list" is the item array
  //var result = fuse.search("");
- 
+ */
  let deckHits = new Map();
  for(let cardName of cardNames)
  {
    if(!cardName) continue;
    cardName=cardName.trim();
    if(cardName.length<3) continue;
-   console.log(fuse.search(cardName));
+   //console.log(fuse.search(cardName));
    const decks = indexMap.get(cardName);
    if(!decks) {continue;}
    for(const deck of decks)
