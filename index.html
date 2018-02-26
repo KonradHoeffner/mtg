@@ -5,15 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Competitive Commander Multiplayer Deck Finder</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
-	<script src="cache/index.js"></script>
-	<script src="cache/decklists.js"></script>
+	<script src="cache/indexReddit.js"></script>
+	<script src="cache/decklistsReddit.js"></script>
+	<script src="cache/indexTappedOut.js"></script>
+	<script src="cache/decklistsTappedOut.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/alpha.js"></script>
 </head>
 <body>
 <textarea id="cardNames" rows="10" cols="50"></textarea>
 <script>document.getElementById("cardNames").value="Cradle\nSun Titan\nUwezama's Jitte\nKarmic Guide\nReveillark\nWall of Roots";</script>
-<input type="button" value="Find Decks" onclick="fuzzySearch(document.getElementById('cardNames').value.split('\n'))"/>
+<input type="button" value="Find Conglomerate Decks" onclick="fuzzySearch(indexMapReddit,decklistsReddit,document.getElementById('cardNames').value.split('\n'))"/>
+<input type="button" value="Find Old Tier List Decks" onclick="fuzzySearch(indexMapTappedOut,decklistsTappedOut,document.getElementById('cardNames').value.split('\n'))"/>
 
 <h3>Explanation</h3>
 Type in the English names of the cards you want to use above.

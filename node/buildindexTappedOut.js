@@ -1,15 +1,17 @@
+module.exports = buildIndexTappedOut;
+
 const ineed = require('ineed');
 const fs = require('fs');
 const  MultiMap = require("collections/multi-map");
 const TIER_LIST_URL = "http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier";
-const DECKLIST_LINKS_FILE = "../cache/decklistlinksTappedOut.json";
-const INDEX_FILE = "../cache/index.js";
-const DECKLIST_FILE = "../cache/decklists.js";
+const DECKLIST_LINKS_FILE = "cache/decklistlinksTappedOut.json";
+const INDEX_FILE = "cache/indexTappedOut.js";
+const DECKLIST_FILE = "cache/decklistsTappedOut.js";
 //const DECKLISTS = 53; // 53 decklists for tier 1, 1.5 and 2
 const TIER_SIZES = [9,16,28,26,138];
 const TIER_NAMES = ["1","1.5","2","2.5","3"];
 
-module.exports = function buildIndexTappedOut()
+function buildIndexTappedOut()
 {
  let decklistLinks;
  if(fs.existsSync(DECKLIST_LINKS_FILE))
@@ -33,6 +35,7 @@ module.exports = function buildIndexTappedOut()
  }
 }
 
+buildIndexTappedOut();
 
 function indexDecklists(deckLinks)
 {
@@ -85,7 +88,7 @@ function indexDecklists(deckLinks)
  }
  Promise.all(promises).then(()=>{
   //console.log(index.get("Brainstorm"));
-  fs.writeFileSync(INDEX_FILE,"var indexMap = new Map("+JSON.stringify(index,null,2)+");");
-  fs.writeFileSync(DECKLIST_FILE,"var decklists = "+JSON.stringify(decklists,null,2)+";");
+  fs.writeFileSync(INDEX_FILE,"var indexMapTappedOut = new Map("+JSON.stringify(index,null,2)+");");
+  fs.writeFileSync(DECKLIST_FILE,"var decklistsTappedOut = "+JSON.stringify(decklists,null,2)+";");
  });
 }

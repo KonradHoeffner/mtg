@@ -8,15 +8,17 @@
   minMatchCharLength: 3,
   keys: ["n"]
  };
+
+
+function fuzzySearch(indexMap,decklists,cardNames)
+{
  const cards = [];
  for(const card of indexMap.keys())
  {
   cards.push({n:card});
  }
- var fuse = new Fuse(cards, options);
+ var fuse = new Fuse(cards, options); // could be cached
 
-function fuzzySearch(cardNames)
-{
  const correctedNames = [];
  for(let cardName of cardNames)
  {
@@ -24,10 +26,10 @@ function fuzzySearch(cardNames)
    result = fuse.search(cardName);
    if(result.length>0) correctedNames.push(result[0].n);
  }
- search(correctedNames);
+ search(indexMap,decklists,correctedNames);
 }
  
-function search(cardNames)
+function search(indexMap,decklists,cardNames)
 {
  let deckHits = new Map();
  for(let cardName of cardNames)
