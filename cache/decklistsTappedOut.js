@@ -1,4 +1,8 @@
-var decklists = {
+var decklistsTappedOut = {
+  "http://tappedout.net/mtg-decks/add/": {
+    "name": "Create Deck",
+    "tier": "1"
+  },
   "http://tappedout.net/mtg-decks/food-chain-tazri/": {
     "name": "Food Chain Tazri",
     "tier": "1"
@@ -9,10 +13,6 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/17-09-16-grixis-twin/": {
     "name": "Grixis Twin",
-    "tier": "1"
-  },
-  "http://tappedout.net/mtg-decks/warrior-prossh-1/": {
-    "name": "warrior prossh",
     "tier": "1"
   },
   "http://tappedout.net/mtg-decks/chain-veil-teferi/": {
@@ -67,8 +67,8 @@ var decklists = {
     "name": "Karador Multiplayer Boonweaver Combo/Control",
     "tier": "1.5"
   },
-  "http://tappedout.net/mtg-decks/demon-school-for-demons-cool/": {
-    "name": "Demon School for Demons, Cool.",
+  "http://tappedout.net/mtg-decks/warrior-prossh-1/": {
+    "name": "warrior prossh",
     "tier": "1.5"
   },
   "http://tappedout.net/mtg-decks/scion-druid-win/": {
@@ -96,7 +96,7 @@ var decklists = {
     "tier": "1.5"
   },
   "http://tappedout.net/mtg-decks/gitrog-land-combo/": {
-    "name": "Gitrog Land Combo [Primer]",
+    "name": "Gitrog Dredge Combo [Primer]",
     "tier": "1.5"
   },
   "http://tappedout.net/mtg-decks/wanderers-song/": {
@@ -133,10 +133,6 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/03-04-16-high-tide/": {
     "name": "High Tide",
-    "tier": "2"
-  },
-  "http://tappedout.net/mtg-decks/jarads-graveyard-midrange/": {
-    "name": "Jarad's Graveyard Midrange",
     "tier": "2"
   },
   "http://tappedout.net/mtg-decks/then-do-it-again-3/": {
@@ -183,8 +179,16 @@ var decklists = {
     "name": "Oona: Queen of the Storm",
     "tier": "2"
   },
+  "http://tappedout.net/mtg-decks/the-incredible-undisruptable-hulk/": {
+    "name": "The Incredible, Undisruptable Hulk",
+    "tier": "2"
+  },
   "http://tappedout.net/mtg-decks/infinite-eternities-that-also-last-a-long-time/": {
     "name": "Infinite Eternities That Also Last A Long Time",
+    "tier": "2"
+  },
+  "http://tappedout.net/mtg-decks/demon-school-for-demons-cool/": {
+    "name": "Demon School for Demons, Cool.",
     "tier": "2"
   },
   "http://tappedout.net/mtg-decks/king-of-hate/": {
@@ -207,17 +211,21 @@ var decklists = {
     "name": "My Spin of Flash-Hulk Mimeo",
     "tier": "2"
   },
+  "http://tappedout.net/mtg-decks/varolz-hulk/": {
+    "name": "Varolz Hulk",
+    "tier": "2"
+  },
   "http://tappedout.net/mtg-decks/big-baral-ler-shot-caller/": {
     "name": "Big Baral-ler, Shot Caller",
     "tier": "2"
   },
   "http://tappedout.net/mtg-decks/cedh-bruna/": {
     "name": "cEDH Bruna",
-    "tier": "2"
+    "tier": "2.5"
   },
   "http://tappedout.net/mtg-decks/dominus-dreamcrusher-edition/": {
     "name": "Dominus - Dreamcrusher Edition",
-    "tier": "2"
+    "tier": "2.5"
   },
   "http://tappedout.net/mtg-decks/darettis-staxmobile/": {
     "name": "Daretti's Staxmobile",
@@ -225,6 +233,10 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/bomberdad/": {
     "name": "Bomberdad",
+    "tier": "2.5"
+  },
+  "http://tappedout.net/mtg-decks/mold-in-his-ears/": {
+    "name": "Mold in His Ears",
     "tier": "2.5"
   },
   "http://tappedout.net/mtg-decks/cedh-brew-13-jhoira/": {
@@ -299,10 +311,6 @@ var decklists = {
     "name": "Dramatic Locust",
     "tier": "2.5"
   },
-  "http://tappedout.net/mtg-decks/varolz-hulk/": {
-    "name": "Varolz Hulk",
-    "tier": "2.5"
-  },
   "http://tappedout.net/mtg-decks/cedh-brew-18-jund-druid/": {
     "name": "cEDH Brew 18: Jund Druid",
     "tier": "2.5"
@@ -321,11 +329,11 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/your-best-friend-v2/": {
     "name": "your best friend v2",
-    "tier": "2.5"
+    "tier": "3"
   },
   "http://tappedout.net/mtg-decks/chainer-resource-domination/": {
     "name": "Chainer: Resource Domination",
-    "tier": "2.5"
+    "tier": "3"
   },
   "http://tappedout.net/mtg-decks/racing-towards-extinction-human-tribal/": {
     "name": "Oh The Humanity! (Competitive Alara Baby)",
@@ -341,6 +349,10 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/going-off-the-rails/": {
     "name": "GOING OFF THE RAILS",
+    "tier": "3"
+  },
+  "http://tappedout.net/mtg-decks/primer-keiths-blood-ritual-bonanza/": {
+    "name": "PRIMER: Keith's blood ritual bonanza!",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/ephara-edh-paradox-combo/": {
@@ -367,6 +379,10 @@ var decklists = {
     "name": "Heartless Hidetsugu [EDH]",
     "tier": "3"
   },
+  "http://tappedout.net/mtg-decks/horde-more-like-a-mess/": {
+    "name": "Horde? More Like a Mess!",
+    "tier": "3"
+  },
   "http://tappedout.net/mtg-decks/25-09-16-polymorph/": {
     "name": "Polymorph",
     "tier": "3"
@@ -383,12 +399,20 @@ var decklists = {
     "name": "Karametra Stax",
     "tier": "3"
   },
+  "http://tappedout.net/mtg-decks/karn-the-joy-of-colourless-competitive-rebuild/": {
+    "name": "Karn - The Joy of Colourless (Competitive Rebuild)",
+    "tier": "3"
+  },
   "http://tappedout.net/mtg-decks/oh-well-everybodys-heard-1/": {
     "name": "oh well everybody's heard",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/keranos-blood-moon/": {
     "name": "Keranos Blood Moon",
+    "tier": "3"
+  },
+  "http://tappedout.net/mtg-decks/kokusho-all-the-life/": {
+    "name": "Kokusho, all the life",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/primer-colored-mana-is-for-the-weak/": {
@@ -413,6 +437,10 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/eternal-smackdown/": {
     "name": "Eternal Smackdown",
+    "tier": "3"
+  },
+  "http://tappedout.net/mtg-decks/numot-mld-stax/": {
+    "name": "Numot MLD stax",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/olivia-mobilized-for-war-list/": {
@@ -479,6 +507,10 @@ var decklists = {
     "name": "Surrak's V8 Twin Turbo",
     "tier": "3"
   },
+  "http://tappedout.net/mtg-decks/scarab-god-combo/": {
+    "name": "Scarab God Combo",
+    "tier": "3"
+  },
   "http://tappedout.net/mtg-decks/scorpion-god-combo-cedh/": {
     "name": "Scorpion god combo (CEDH)",
     "tier": "3"
@@ -489,6 +521,10 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/06-07-17-the-night-is-dark-and-full-of-terrors/": {
     "name": "The Night is Dark and Full of Terrors",
+    "tier": "3"
+  },
+  "http://tappedout.net/mtg-decks/optimized-xenagos/": {
+    "name": "Optimized Xenagos",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/paradox-xira-arien/": {
@@ -505,6 +541,10 @@ var decklists = {
   },
   "http://tappedout.net/mtg-decks/braids-the-sociopath/": {
     "name": "Braids, the sociopath",
+    "tier": "3"
+  },
+  "http://tappedout.net/mtg-decks/erayo-said-no/": {
+    "name": "Erayo Said NO!",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/pleasestaybanned/": {
@@ -527,36 +567,8 @@ var decklists = {
     "name": "Partner Pairs Listing",
     "tier": "3"
   },
-  "http://tappedout.net/mtg-decks/sphinxs-tutalage/": {
-    "name": "sphinx's tutalage",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/reyhan-kraum-food-chain/": {
-    "name": "Reyhan Kraum food chain",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/rafiq-one-for-all/": {
-    "name": "Rafiq, One For All",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/rewarded-devotion-1/": {
-    "name": "Rewarded Devotion",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/inalla-wizzard-combo-engine/": {
-    "name": "My submission for Inalla.",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/inalla-deck-3/": {
-    "name": "Inalla Deck",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/yes-i-know-emmy-is-banned/": {
-    "name": "Yes i know emmy is banned",
-    "tier": "3"
-  },
-  "http://tappedout.net/mtg-decks/the-incredible-undisruptable-hulk/": {
-    "name": "The Incredible, Undisruptable Hulk",
+  "http://tappedout.net/mtg-decks/edh-generals-by-tier/": {
+    "name": "EDH Generals by Tier",
     "tier": "3"
   },
   "http://tappedout.net/mtg-decks/scion-is-rawrfaced/": {
