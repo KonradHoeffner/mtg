@@ -21,14 +21,13 @@
 <h3>Explanation</h3>
 Type in the English names of the cards you want to use above.
 You will get a list of all of the <a href="http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/">Tier "1-3"</a> decks sorted by number of matches.
-As an example, all cards from Alpha edition are given.
 Partial matches ("Bolt","Cradle") and typos ("Thoughtsieze", "Uwezama's Jitte") are automatically corrected.
 <h3>Motivation</h3>
 Do you have some cards lying around that you can't find a home for? Sites like <a href="https://edhrec.com">EDHREC</a> show you decks for a single card but I haven't found any tool that maximizes the use of multiple cards. Also, I wanted to only include competitive decks.
 <h3>Questions and Contributions</h3>
 This is a quick hack developed <a href="https://github.com/konradhoeffner/mtg">on GitHub</a>. Feel free to contribute a pull request or to open an issue to report bugs, ask questions or propose additions.
 <h3>Known Bugs</h3>
-Tier 3 isn't complete and contains some invalid decks, I still included it for the sake of completeness.
+Tier 3 from the old multiplayer tier list isn't complete and contains some invalid decks, I still included it for the sake of completeness.
 Because I couldn't get the tappedout API to work, I had to rely on quick and dirty Web scraping, which means that some cards may end up in decks when they are only discussed in the comments.
 <h3>Requirements</h3>
 The code only uses JavaScript, but some ES5/ES6 features.
@@ -36,7 +35,6 @@ Any recent browser should work fine, but I don't think it will work on Internet 
 <h3>Future Work</h3>
 I am planning to add:
 <ul>
-<li>alternative search target of <a href="https://www.reddit.com/r/LabManiacs/comments/5si9gw/competitive_edh_decklist_conglomerate">The Competitive EDH Decklist Conglomerate</a>/</li>
 <li>card weighting (e.g. by card price)</li>
 <li>import and export functions (which file formats do you use?)</li>
 <li>find a minimal amount of decks that cover all, or most of your cards</li>
