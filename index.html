@@ -4,19 +4,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Competitive Commander Multiplayer Deck Finder</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
-	<script src="cache/indexReddit.js"></script>
-	<script src="cache/decklistsReddit.js"></script>
-	<script src="cache/indexTappedOut.js"></script>
-	<script src="cache/decklistsTappedOut.js"></script>
-	<script src="js/index.js"></script>
-	<script src="js/alpha.js"></script>
 </head>
 <body>
-<textarea id="cardNames" rows="10" cols="50"></textarea>
-<script>document.getElementById("cardNames").value="Cradle\nSun Titan\nUwezama's Jitte\nKarmic Guide\nReveillark\nWall of Roots";</script>
-<input type="button" value="Find Conglomerate Decks" onclick="fuzzySearch(indexMapReddit,decklistsReddit,document.getElementById('cardNames').value.split('\n'))"/>
-<input type="button" value="Find Old Tier List Decks" onclick="fuzzySearch(indexMapTappedOut,decklistsTappedOut,document.getElementById('cardNames').value.split('\n'))"/>
+
+<form method="GET" action="result.html">
+  <textarea id="cardNames" name="cardNames" rows="10" cols="50"></textarea>
+  <button type="submit" name="source" value="conglomerate">Find Conglomerate Decks</button>
+  <button type="submit" name="source" value="tierlist">Find Old Tier List Deck</button>
+  <input type="button" value="Example Query" onclick='document.getElementById("cardNames").value="Cradle\nSun Titan\nUwezamas Jitte\nKarmic Guide\nReveillark\nWall of Roots";'/>
+  <input type="button" value="Clear" onclick='document.getElementById("cardNames").value="";'/>
+</form>
 
 <h3>Explanation</h3>
 Type in the English names of the cards you want to use above.
