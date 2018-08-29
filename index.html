@@ -12,13 +12,48 @@
   <button type="submit" name="source" value="conglomerate">Find Conglomerate Decks</button>
   <button type="submit" name="source" value="tierlist">Find Old Tier List Deck</button>
   <input type="button" value="Example Query" onclick='document.getElementById("cardNames").value="Cradle\nSun Titan\nUwezamas Jitte\nKarmic Guide\nReveillark\nWall of Roots";'/>
+  <input type="file" value="Upload Cardnames" id="upload"/>
   <input type="button" value="Clear" onclick='document.getElementById("cardNames").value="";'/>
 </form>
+
+<script>
+const uploadButton = document.getElementById("upload");
+uploadButton.addEventListener("change",upload);
+
+function upload()
+{
+ console.log("upload started");
+ const files = uploadButton.files;
+ if(files.length > 0)
+ {
+ console.log("file selected");
+  const file = files[0];
+  const reader = new FileReader();
+  reader.addEventListener("load",()=>
+  {
+   console.log("loading file");
+   const cardNames = document.getElementById("cardNames");
+   cardNames.value = "";
+   for(let line of reader.result.split("\n"))
+   {
+    line = line.trim();
+    if(line.startsWith("#")||line.startsWith("//")) {continue;} // ignore comments
+    console.log(line);
+    // remove card multiplicities
+    line = line.replace(/^[0-9]+/,"");
+    cardNames.value+=line.trim()+"\n";
+   }
+  });
+  reader.readAsText(file);
+ }
+}
+</script>
 
 <h3>Explanation</h3>
 Type in the English names of the cards you want to use above.
 You will get a list of all of the <a href="http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/">Tier "1-3"</a> decks sorted by number of matches.
 Partial matches ("Bolt","Cradle") and typos ("Thoughtsieze", "Uwezama's Jitte") are automatically corrected.
+Use the browse button to upload card lists.
 <h3>Motivation</h3>
 Do you have some cards lying around that you can't find a home for? Sites like <a href="https://edhrec.com">EDHREC</a> show you decks for a single card but I haven't found any tool that maximizes the use of multiple cards. Also, I wanted to only include competitive decks.
 <h3>Questions and Contributions</h3>
@@ -30,10 +65,10 @@ Because I couldn't get the tappedout API to work, I had to rely on quick and dir
 The code only uses JavaScript, but some ES5/ES6 features.
 Any recent browser should work fine, but I don't think it will work on Internet Explorer.
 <h3>Future Work</h3>
-I am planning to add:
+If requested, I could try to add:
 <ul>
 <li>card weighting (e.g. by card price)</li>
-<li>import and export functions (which file formats do you use?)</li>
+<li>export function (which format?)</li>
 <li>find a minimal amount of decks that cover all, or most of your cards</li>
 <li>search 1v1 MTGO lists as well</li>
 <li>use the proper tappedout API if I get it to work</li>
