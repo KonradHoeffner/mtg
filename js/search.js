@@ -26,7 +26,7 @@ function fuzzySearch(indexMap,decklists,cardNames)
    result = fuse.search(cardName);
    if(result.length>0) correctedNames.push(result[0].n);
  }
- search(indexMap,decklists,correctedNames);
+ return search(indexMap,decklists,correctedNames);
 }
  
 function search(indexMap,decklists,cardNames)
@@ -49,7 +49,11 @@ function search(indexMap,decklists,cardNames)
    }
  }
 // deckHits = [...deckHits.entries()].sort((a,b)=>decklists[a[0]].tier>decklists[b[0]].tier);
- deckHits = [...deckHits.entries()].sort((a,b)=>a[1].length<b[1].length);
+ return deckHits = [...deckHits.entries()].sort((a,b)=>a[1].length<b[1].length);
+}
+
+function display(deckHits)
+{
  const rows = deckHits.map(e=>`<tr><td><a href="${e[0]}">${decklists[e[0]].name}</a></td><td>${decklists[e[0]].tier}</td><td>${e[1].length}</td><td>${e[1]}</td></tr>\n`);
  const table = document.getElementById("resulttable");
  for(const row of rows)

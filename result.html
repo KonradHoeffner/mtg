@@ -54,7 +54,7 @@ if(!params.get("source"))
  }
 }
 
-fuzzySearch(indexMap,decklists,cardNames);
+display(fuzzySearch(indexMap,decklists,cardNames));
 
 const table = document.getElementById("resulttable");
 table.style.visibility="visible";
