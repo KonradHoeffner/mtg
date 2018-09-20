@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Competitive Commander Statistics</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
+	<script src="cache/indexReddit.js"></script>
+	<script src="cache/decklistsReddit.js"></script>
+	<script src="cache/indexTappedOut.js"></script>
+	<script src="cache/decklistsTappedOut.js"></script>
+	<script src="js/search.js"></script>
+	<script src="js/gravehate.js"></script>
+</head>
+<body>
+<table id="resulttable" style="visibility:hidden;">
+<tr><th>Decklist</th><th>Tier</th><th>Hits</th><th>Cards</th></tr>
+</table>
+
+<script>
+    display(TIER_LIST,exactSearch(TIER_LIST,GRAVE_HATE));
+
+</script>
+</body>
+</html>

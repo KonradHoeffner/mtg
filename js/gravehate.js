@@ -1,4 +1,4 @@
-var gravehate = {
+const GRAVE_HATE = [
 "Agent of Erebos",
 "Anafenza, the Foremost",
 "Anafenza, the Foremost",
@@ -126,5 +126,6 @@ var gravehate = {
 "Wheel of Sun and Moon",
 "Withered Wretch",
 "Wrexial, the Risen Deep",
-"Yixlid Jailer"}
+"Yixlid Jailer"
+]
 
