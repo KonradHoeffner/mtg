@@ -1,5 +1,6 @@
  // testing fuse, optimize later by precalculating in node
- var options = {
+ var options =
+ {
   shouldSort: false,
   threshold: 0.2,
   location: 0,
@@ -9,11 +10,22 @@
   keys: ["n"]
  };
 
+const TIER_LIST = 
+{
+ indexMap: indexMapTappedOut,
+ decklists: decklistsTappedOut
+};
 
-function fuzzySearch(indexMap,decklists,cardNames)
+const CONGLOMERATE =
+{
+ indexMap: indexMapReddit,
+ decklists: decklistsReddit
+};
+
+function fuzzySearch(source,cardNames)
 {
  const cards = [];
- for(const card of indexMap.keys())
+ for(const card of source.indexMap.keys())
  {
   cards.push({n:card});
  }
@@ -26,10 +38,10 @@ function fuzzySearch(indexMap,decklists,cardNames)
    result = fuse.search(cardName);
    if(result.length>0) correctedNames.push(result[0].n);
  }
- return search(indexMap,decklists,correctedNames);
+ return exactSearch(source,correctedNames);
 }
  
-function search(indexMap,decklists,cardNames)
+function exactSearch(source,cardNames)
 {
  let deckHits = new Map();
  for(let cardName of cardNames)
@@ -37,7 +49,7 @@ function search(indexMap,decklists,cardNames)
    if(!cardName) continue;
    cardName=cardName.trim();
    if(cardName.length<3) continue;
-   const decks = indexMap.get(cardName);
+   const decks = source.indexMap.get(cardName);
    if(!decks) {continue;}
    for(const deck of decks)
    {
@@ -52,10 +64,11 @@ function search(indexMap,decklists,cardNames)
  return deckHits = [...deckHits.entries()].sort((a,b)=>a[1].length<b[1].length);
 }
 
-function display(deckHits)
+function display(source, deckHits)
 {
- const rows = deckHits.map(e=>`<tr><td><a href="${e[0]}">${decklists[e[0]].name}</a></td><td>${decklists[e[0]].tier}</td><td>${e[1].length}</td><td>${e[1]}</td></tr>\n`);
+ const rows = deckHits.map(e=>`<tr><td><a href="${e[0]}">${source.decklists[e[0]].name}</a></td><td>${source.decklists[e[0]].tier}</td><td>${e[1].length}</td><td>${e[1]}</td></tr>\n`);
  const table = document.getElementById("resulttable");
+ table.style.visibility="visible";
  for(const row of rows)
  {
    table.innerHTML+=row;

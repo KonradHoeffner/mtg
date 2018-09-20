@@ -32,8 +32,6 @@ if(!(cardNames=params.get("cardNames")))
  throw new Error("No card names given for deck search. Please specify at least one card in the <a href='index.html'>search engine</a>.");
 }
 cardNames = cardNames.split("\n");
-let indexMap = indexMapReddit;
-let decklists = decklistsReddit;
 if(!params.get("source"))
 {
  console.log("Source not specified. Using default.");
@@ -43,21 +41,15 @@ if(!params.get("source"))
  switch(source)
  {
   case "tierlist":
-    indexMap = indexMapTappedOut;
-    decklists = decklistsTappedOut;
-    console.log("Setting source to old tier list from tapped out.");
+    display(TIER_LIST,fuzzySearch(TIER_LIST,cardNames));
     break;
   default:
-    console.log("Unkown source. Using default.");
+    console.log("Unknown source. Using default.");
   case "conglomerate":
-    console.log("Setting source to new conglomerate from reddit.");
+    display(CONGLOMERATE,fuzzySearch(CONGLOMERATE,cardNames));
  }
 }
 
-display(fuzzySearch(indexMap,decklists,cardNames));
-
-const table = document.getElementById("resulttable");
-table.style.visibility="visible";
 </script>
 </body>
 </html>
