@@ -76,10 +76,13 @@ function exactSearch(source,cardNames)
 function display(searchResult)
 {
  const rows = searchResult.deckCards.map(e=>`<tr><td><a href="${e[0]}">${searchResult.source.decklists[e[0]].name}</a></td><td>${searchResult.source.decklists[e[0]].tier}</td><td>${e[1].length}</td><td>${e[1]}</td></tr>\n`);
- const table = document.getElementById("resulttable");
- table.style.visibility="visible";
+ const table = document.createElement("table");
+ table.innerHTML = "<tr><th>Decklist</th><th>Tier</th><th>Hits</th><th>Cards</th></tr>";
  for(const row of rows)
  {
    table.innerHTML+=row;
  }
+ document.writeln(table.outerHTML);
+ //if(!tableParent) {tableParent=document.body;}
+ //tableParent.appendChild(table); // mixing this with document.write seems to lead to strange behaviour
 }
