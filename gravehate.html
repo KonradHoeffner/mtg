@@ -13,13 +13,19 @@
 	<script src="js/gravehate.js"></script>
 </head>
 <body>
+<h1>cEDH Graveyard Hate Statistics</h1>
 <table id="resulttable" style="visibility:hidden;">
 <tr><th>Decklist</th><th>Tier</th><th>Hits</th><th>Cards</th></tr>
 </table>
 
 <script>
-    display(TIER_LIST,exactSearch(TIER_LIST,GRAVE_HATE));
-
+ //display(TIER_LIST,exactSearch(TIER_LIST,GRAVE_HATE));
+ const result = exactSearch(TIER_LIST,GRAVE_HATE);
+ result.cardDecks.forEach((value,key,map)=>
+ {
+  document.write(key);
+ });
+ console.log(result.cardDecks);
 </script>
 </body>
 </html>

@@ -41,12 +41,12 @@ if(!params.get("source"))
  switch(source)
  {
   case "tierlist":
-    display(TIER_LIST,fuzzySearch(TIER_LIST,cardNames));
+    display(fuzzySearch(TIER_LIST,cardNames));
     break;
   default:
     console.log("Unknown source. Using default.");
   case "conglomerate":
-    display(CONGLOMERATE,fuzzySearch(CONGLOMERATE,cardNames));
+    display(fuzzySearch(CONGLOMERATE,cardNames));
  }
 }
 

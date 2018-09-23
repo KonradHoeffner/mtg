@@ -43,7 +43,12 @@ function fuzzySearch(source,cardNames)
  
 function exactSearch(source,cardNames)
 {
- let deckHits = new Map();
+ const result = 
+ {
+  source: source,
+  deckCards: new Map(),
+  cardDecks: new Map()
+ };
  for(let cardName of cardNames)
  {
    if(!cardName) continue;
@@ -51,22 +56,26 @@ function exactSearch(source,cardNames)
    if(cardName.length<3) continue;
    const decks = source.indexMap.get(cardName);
    if(!decks) {continue;}
+   result.cardDecks.set(cardName,decks);
    for(const deck of decks)
    {
      //console.log(`deck ${deck} contains card ${cardName}`);
-     let hits = deckHits.get(deck);
+     let hits = result.deckCards.get(deck);
      if(!hits) {hits=[];}
      hits.push(cardName);
-     deckHits.set(deck,hits);
+     result.deckCards.set(deck,hits);
    }
  }
-// deckHits = [...deckHits.entries()].sort((a,b)=>decklists[a[0]].tier>decklists[b[0]].tier);
- return deckHits = [...deckHits.entries()].sort((a,b)=>a[1].length<b[1].length);
+// deckCards = [...deckCards.entries()].sort((a,b)=>decklists[a[0]].tier>decklists[b[0]].tier);
+ // sort both maps by number of hits
+ result.deckCards = [...result.deckCards.entries()].sort((a,b)=>a[1].length<b[1].length);
+ result.cardDecks = [...result.cardDecks.entries()].sort((a,b)=>a[1].length<b[1].length);
+ return result;
 }
 
-function display(source, deckHits)
+function display(searchResult)
 {
- const rows = deckHits.map(e=>`<tr><td><a href="${e[0]}">${source.decklists[e[0]].name}</a></td><td>${source.decklists[e[0]].tier}</td><td>${e[1].length}</td><td>${e[1]}</td></tr>\n`);
+ const rows = searchResult.deckCards.map(e=>`<tr><td><a href="${e[0]}">${searchResult.source.decklists[e[0]].name}</a></td><td>${searchResult.source.decklists[e[0]].tier}</td><td>${e[1].length}</td><td>${e[1]}</td></tr>\n`);
  const table = document.getElementById("resulttable");
  table.style.visibility="visible";
  for(const row of rows)
