@@ -5,6 +5,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Competitive Commander Statistics</title>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
  <script src="cache/indexReddit.js"></script>
  <script src="cache/decklistsReddit.js"></script>
  <script src="cache/indexTappedOut.js"></script>
@@ -17,18 +18,73 @@
  </style>
 
  <script>
- function displayGraveHate(source,name,url)
+ function chart(result,label)
  {
-  document.write(`<h3>Source: <a href='${url}'>${name}</a></h3>`);
-  document.write("<h4>By card</h4>");
-  const result = exactSearch(source,GRAVE_HATE);
-  document.write("<ul>\n");
+  const data = [];
+  const cardNames = [];
+  const chartData = { 
+  labels: cardNames,
+  datasets: [{
+//   label: label,
+   backgroundColor: "#cc0000",
+   borderColor: "black",
+   borderWidth: 1,
+   data: data
+   }]
+  };
   for(const a of result.cardDecks)
   {
-   document.write(`<li>${a[0]} (${a[1].length} decks)</li>\n`);
+   cardNames.push(a[0]);
+   data.push(a[1].length);
   }
-  document.write("</ul>\n");
-  document.write("<h4>By Deck</h4>"); 
+  console.log(chartData);
+  
+  window.onload = function() {
+   var ctx = document.getElementById('canvas').getContext('2d');
+   window.myHorizontalBar = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: chartData,
+    options: {
+     // Elements options apply to all of the options unless overridden in a dataset
+     // In this case, we are setting the border of each horizontal bar to be 2px wide
+     elements: {
+      rectangle: {
+       borderWidth: 2,
+      }
+     },
+     responsive: true,
+     legend: {
+      position: 'right',
+     },
+     title: {
+      display: true,
+      text: label
+     }
+    }
+   });
+
+  };
+ }
+
+ function displayGraveHate(source,name,url)
+ {
+  //document.writeln(`<h3>Source: <a href='${url}'>${name}</a></h3>`);
+  //document.writeln("<h4>By Card</h4>");
+
+  const result = exactSearch(source,GRAVE_HATE);
+
+  chart(result,name);
+
+  document.writeln("<h4>By Card as Text</h4>");
+  
+  document.writeln("<ul>\n");
+  for(const a of result.cardDecks)
+  {
+   document.writeln(`<li>${a[0]} (${a[1].length} decks)</li>\n`);
+  }
+  document.writeln("</ul>\n");
+
+  document.writeln("<h4>By Deck</h4>"); 
   display(exactSearch(source,GRAVE_HATE));
  }
  </script>
@@ -38,10 +94,14 @@
 <h1>cEDH Graveyard Hate Statistics</h1>
 <div class="row">
  <div class="column" id="column1">
- <script>displayGraveHate(CONGLOMERATE,"Competitive EDH Decklist Conglomerate","https://www.reddit.com/r/LabManiacs/comments/5si9gw/competitive_edh_decklist_conglomerate/");</script>
+  <h3>Source: <a href='https://www.reddit.com/r/LabManiacs/comments/5si9gw/competitive_edh_decklist_conglomerate'>Competitive EDH Decklist Conglomerate</a></h3>
+  <div id="container1" style="width: 99%;"><canvas id="canvas1"></canvas></div>
+ <script>displayGraveHate(CONGLOMERATE,"Competitive EDH Decklist Conglomerate","https://www.reddit.com/r/LabManiacs/comments/5si9gw/competitive_edh_decklist_conglomerate/","canvas1");</script>
 </div>
  <div class="column" id="column2">
- <script>displayGraveHate(TIER_LIST,"[List - Multiplayer] EDH Generals by Tier","http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/");</script>
+ <h3>Source: <a href='http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/'>[List - Multiplayer] EDH Generals by Tier</a></h3>
+  <div id="container2" style="width: 99%;"><canvas id="canvas2"></canvas></div>
+ <script>displayGraveHate(TIER_LIST,"[List - Multiplayer] EDH Generals by Tier","http://tappedout.net/mtg-decks/list-multiplayer-edh-generals-by-tier/","canvas2");</script>
 </div>
 </div>
 
@@ -50,7 +110,7 @@ Graveyard hate source: <a href="http://tappedout.net/mtg-decks/list-of-graveyard
 </html>
 
 <!--
-document.write(
+document.writeln(
 `<details>
 <summary>${a[0]} (${a[1].length} decks)</summary>
 ${a[1]}
